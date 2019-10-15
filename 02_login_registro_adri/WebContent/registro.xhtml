@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body>
+	<center>
+		<h:form>
+			Intoroduce usuario: <h:inputText value="#{registroBean.cliente.usuario}" /><br/><br/>
+			Introduce contraseña: <h:inputSecret value="#{registroBean.cliente.password}" /><br/><br/>
+			Intoroduce teléfono: <h:inputText value="#{registroBean.cliente.telefono}" /><br/><br/>
+			Intoroduce email: <h:inputText value="#{registroBean.cliente.email}" /><br/><br/>
+			<h:commandButton action="#{registroBean.registro()}" value="Entrar" />
+		</h:form>
+	</center>
+</h:body> 
+</html>
