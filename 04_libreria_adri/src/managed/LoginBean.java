@@ -1,17 +1,13 @@
 package managed;
 
-import java.util.List;
-
 import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import daos.DaoClientes;
-import daos.DaoLibros;
-import model.Libro;
 
 @ManagedBean(name="loginBean")
-@RequestScoped
+@SessionScoped
 public class LoginBean {
 	@EJB
 	DaoClientes dao;
@@ -37,7 +33,7 @@ public class LoginBean {
 		if(!dao.autenticar(usuario, password)) {
 			return "error";
 		}else {
-			return "bienvenida";
+			return "menu";
 		}
 	}
 }
