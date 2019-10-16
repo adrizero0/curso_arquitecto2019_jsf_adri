@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h1>El usuario <h:outputText value="#{loginBean.usuario}" /> está  registrado</h1>
+	<h:form>
+		<h:commandLink action="#{librosBean.finSesion()}" value="Desconectar" />
+	</h:form>
+	<br/><br/>	
+		<h:dataTable var="lb" value="#{librosBean.libros}" border="1">
+			<h:column>
+				<f:facet name="header">Titulo</f:facet>
+				#{lb.titulo}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Autor</f:facet>
+				#{lb.autor}
+			</h:column>
+			<h:column>
+				<f:facet name="header">Precio</f:facet>
+				#{lb.precio}
+			</h:column>
+		</h:dataTable>
+		
+	<br/><br/>
+	<h:link outcome="temas" value="Volver"/>
+</h:body> 
+</html>

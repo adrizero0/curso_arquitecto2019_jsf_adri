@@ -17,8 +17,6 @@ import model.Libro;
 public class LibrosBean {
 	@EJB
 	DaoLibros daoLibros;
-	@ManagedProperty("#{loginBean}")
-	LoginBean loginBean;
 	@ManagedProperty("#{temasBean}")
 	TemasBean temasBean;
 	
@@ -27,19 +25,11 @@ public class LibrosBean {
 	//POST CONSTRUCT SE USA PARA QUE UN METODO SE EJECUTE DESPUÉS DE QUE SE CREE EL OBJETO
 	@PostConstruct
 	public void init() {
-		if(temasBean.getTemas()==0) {
+		if(temasBean.getIdTemaSel()==0) {
 			libros=daoLibros.obtenerLibros();
 		}else {
-			libros=daoLibros.obtenerLibroTema(temasBean.getIdTema());
+			libros=daoLibros.obtenerLibroTema(temasBean.getIdTemaSel());
 		}
-	}
-	
-	public LoginBean getLoginBean() {
-		return loginBean;
-	}
-
-	public void setLoginBean(LoginBean loginBean) {
-		this.loginBean = loginBean;
 	}
 
 	public List<Libro> getLibros() {
@@ -48,6 +38,14 @@ public class LibrosBean {
 	}
 	public void setLibros(List<Libro> libros) {
 		this.libros = libros;
-	}	
+	}
 
+	public TemasBean getTemasBean() {
+		return temasBean;
+	}
+
+	public void setTemasBean(TemasBean temasBean) {
+		this.temasBean = temasBean;
+	}	
+	
 }

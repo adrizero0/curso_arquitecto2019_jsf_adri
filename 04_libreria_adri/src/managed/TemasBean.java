@@ -22,15 +22,27 @@ public class TemasBean {
 	@PostConstruct
 	public void init() {		
 		temas=daoTemas.obtenerTemas();		
-	}	
-
+	}
 
 	public List<Tema> getTemas() {
 		return temas;
 	}
-
+	
 	public void setTemas(List<Tema> temas) {
 		this.temas = temas;
-	}	
+	}
+
+	public int getIdTemaSel() {
+		return idTemaSel;
+	}
+
+	public void setIdTemaSel(int idTemaSel) {
+		this.idTemaSel = idTemaSel;
+	}
+	
+	//METODO CONTROLADOR DE ACCION
+//	public String libros() {
+//		return "libros";
+//	}
 
 }

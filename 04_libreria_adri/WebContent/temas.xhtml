@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+
+<h:head></h:head>
+<h:body>
+	<center>
+	<h1>El usuario <h:outputText value="#{loginBean.usuario}" /> está usted registrado</h1>
+		<h:form>
+			<h1>Seleccione tema:</h1>
+			<h:selectOneMenu value="#{temasBean.idTemaSel}">
+			<f:selectItem itemLabel="Todos" itemValue="0"/>
+			<f:selectItems var="t" value="#{temasBean.temas}"
+							itemValue="#{t.idTema}"
+							itemLabel="#{t.tema}"/>			
+			</h:selectOneMenu>			
+			<h:commandButton action="#{temasBean.libros()}" value="Buscar" />
+		</h:form>
+		<br/><br/>
+		<h:link outcome="login" value="Volver"/>
+	</center>
+</h:body>
+</html>
