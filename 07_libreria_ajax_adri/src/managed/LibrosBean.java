@@ -14,7 +14,7 @@ import daos.DaoLibros;
 import model.Libro;
 import utilidades.Contexto;
 
-@ManagedBean(name="librosBean")
+@ManagedBean
 @RequestScoped
 public class LibrosBean {
 	@EJB
@@ -40,6 +40,7 @@ public class LibrosBean {
 			libros=daoLibros.obtenerLibrosTema(temasBean.getTemaSel());
 		}
 		return libros;
+		
 	}
 
 	public void setLibros(List<Libro> libros) {

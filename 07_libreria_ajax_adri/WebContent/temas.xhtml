@@ -4,13 +4,24 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:h="http://java.sun.com/jsf/html"> 
 
-<h:head></h:head> 
+<h:head>
+	<script type="text/javascript">
+		function cambiarColor(){
+			var objTabla=document.getElementById("tblibros");
+			var objLista=document.getElementById("lista");
+			objTabla.style.backgroundColor="yellow";
+			objLista.style.backgroundColor="lightblue";
+		}
+		
+	</script>
+
+</h:head> 
 <h:body> 
 <h1>El usuario <h:outputText value="#{loginBean.usuario}" /> está  registrado</h1>
 	<center>
-		<h:form>
+		<h:form prependId="false">
 			<h1>Seleccione tema:</h1>
-			<h:selectOneMenu value="#{temasBean.temaSel}">
+			<h:selectOneMenu id="lista" value="#{temasBean.temaSel}">
 				<f:selectItem itemLabel="Todos" itemValue="0"/>
 				<f:selectItems var="t" value="#{temasBean.temas}"
 							itemValue="#{t.idTema}"
@@ -19,7 +30,7 @@
 			</h:selectOneMenu>			 
 		</h:form><br/><br/>
 		
-		<h:dataTable id="tblibros" var="lb" value="#{librosBean.libros}" border="1">
+		<h:dataTable id="tblibros" var="lb" value="#{librosBean.libros}" border="1" onmouseover="cambiarColor();">
 			<h:column>
 				<f:facet name="header">Titulo</f:facet>
 				#{lb.titulo}

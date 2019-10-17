@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"> 
+
+<h:head></h:head> 
+<h:body>
+	<center>
+		<h:form>
+			<h:dataTable  prependId="false" id="ptpedidos" var="pt" value="#{pedidosBean.pedidos}" border="1">
+				<h:column>
+					<f:facet name="header">Producto</f:facet>
+					#{pt.producto}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Precio</f:facet>
+					#{pt.precio}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Categoría</f:facet>
+					#{pt.categoria}
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandLink action="#{pedidosBean.eliminar(pt.idPedido)}" value="Eliminar" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandLink action="#{editarBean.inicio(pt.idPedido)}" value="Editar" />
+				</h:column>			
+			</h:dataTable>
+		</h:form>
+		<br/><br/>		
+		<h:link outcome="menu" value="Volver"/>	
+	</center>
+
+
+</h:body> 
+</html>
