@@ -1,0 +1,42 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:c="http://java.sun.com/jsp/jstl/core"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form id="form">
+		<h1>Listado de pedidos</h1>
+		<h:panelGroup id="tabla">
+			<h:dataTable  var="pd" value="#{pedidosBean.pedidos}" border="1">
+				<h:column>
+					<f:facet name="header">Producto</f:facet>
+					#{pd.producto}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Precio</f:facet>
+					#{pd.precio}
+				</h:column>
+				<h:column>
+					<f:facet name="header">Categoría</f:facet>
+					#{pd.categoria}
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandLink action="#{pedidosBean.editarPedido(pd.idPedido)}" value="Editar" />
+				</h:column>
+				<h:column>
+					<f:facet name="header"></f:facet>
+					<h:commandLink action="#{pedidosBean.eliminarPedido(pd.idPedido)}" value="Eliminar">
+						<f:ajax execute="@form" render=":form:tabla"/>
+					</h:commandLink>
+				</h:column>
+			</h:dataTable>
+		</h:panelGroup>
+	</h:form>
+	<br/><br/>
+	<h:link outcome="menu" value="volver"/>
+</h:body> 
+</html>
