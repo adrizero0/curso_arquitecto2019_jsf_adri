@@ -10,11 +10,10 @@
 		<h:form>
 			 Producto: <h:inputText value="#{editarBean.pedido.producto}" /><br/><br/>
 			 Precio: <h:inputText value="#{editarBean.pedido.precio}" /><br/><br/>
-			 Categoría: <h:selectOneMenu value="#{editarBean.pedido.categoria}" >
-			 		<f:selectItems value="#{editarBean.categorias}"
-			 		
-			 		/>
-			 	</h:selectOneMenu>
+			 Categoría: 
+			 <h:selectOneMenu value="#{editarBean.pedido.categoria}" >
+			 		<f:selectItems value="#{editarBean.categorias}"/>
+			 </h:selectOneMenu>
 			 <br/><br/>
 			<h:commandButton action="#{editarBean.actualizar()}" value="Guardar" /> 
 		</h:form><br/><br/>

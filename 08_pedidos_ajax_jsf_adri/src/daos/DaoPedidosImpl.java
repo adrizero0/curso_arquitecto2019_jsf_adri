@@ -38,9 +38,8 @@ public class DaoPedidosImpl implements DaoPedidos {
 	}
 
 	@Override
-	public void actualizarPedido(int idPedido) {
-		Pedido p=em.find(Pedido.class, idPedido);
-		em.merge(p);
+	public void actualizarPedido(Pedido pedido) {
+		em.merge(pedido);
 	}
 
 	@Override

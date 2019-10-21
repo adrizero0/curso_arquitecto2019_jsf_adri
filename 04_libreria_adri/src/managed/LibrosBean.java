@@ -24,7 +24,7 @@ public class LibrosBean {
 	
 	//POST CONSTRUCT SE USA PARA QUE UN METODO SE EJECUTE DESPUÉS DE QUE SE CREE EL OBJETO
 	@PostConstruct
-	public void init() {
+	public void inicio() {
 		if(temasBean.getIdTemaSel()==0) {
 			libros=daoLibros.obtenerLibros();
 		}else {
@@ -33,7 +33,6 @@ public class LibrosBean {
 	}
 
 	public List<Libro> getLibros() {
-		libros=daoLibros.obtenerLibros();
 		return libros;
 	}
 	public void setLibros(List<Libro> libros) {

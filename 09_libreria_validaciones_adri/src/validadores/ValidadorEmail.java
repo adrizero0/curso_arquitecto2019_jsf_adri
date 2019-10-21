@@ -15,7 +15,7 @@ public class ValidadorEmail implements Validator {
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object arg2) throws ValidatorException {
 		String valor=(String) arg2;
-		if(valor.contentEquals(".")==false||valor.contentEquals("@")==false) {
+		if(valor.contains(".")==false||valor.contains("@")==false) {
 			ResourceBundle res=arg0.getApplication().getResourceBundle(arg0, "mens");			
 			throw new ValidatorException(new FacesMessage(res.getString("error.email")));
 		}

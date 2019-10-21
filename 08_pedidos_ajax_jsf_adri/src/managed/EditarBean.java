@@ -7,22 +7,21 @@ import javax.ejb.EJB;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.RequestScoped;
+import javax.faces.bean.ViewScoped;
 
 import daos.DaoPedidos;
 import model.Pedido;
 
 @ManagedBean
-@RequestScoped
+@ViewScoped
 public class EditarBean {
-	@ManagedProperty("#{pedidosBean}")
+	@ManagedProperty("#{pedidosBean!=null?pedidosBean:null}")
 	PedidosBean pedidosBean;
 	
 	@EJB
-	DaoPedidos daoPedidos;
-	
+	DaoPedidos daoPedidos;	
 	List<String> categorias;
 	Pedido pedido;
-	int idPedido;
 	
 	public PedidosBean getPedidosBean() {
 		return pedidosBean;
@@ -42,20 +41,14 @@ public class EditarBean {
 	public void setPedido(Pedido pedido) {
 		this.pedido = pedido;
 	}	
-	public int getIdPedido() {
-		return idPedido;
-	}
-	public void setIdPedido(int idPedido) {
-		this.idPedido = idPedido;
-	}
+	
 	@PostConstruct
-	public int inicio(int idPedido) {
+	public void inicio() {
 		categorias=daoPedidos.recuperarCategorias();
-		pedido=pedidosBean.daoPedidos.recuperarPedido(idPedido);
-		return idPedido;
+		pedido=pedidosBean.getPedidoEditar();
 	}	
 	public String actualizar() {
-		daoPedidos.actualizarPedido(idPedido);
+		daoPedidos.actualizarPedido(pedido);
 		return "pedidos";
 	}
 }

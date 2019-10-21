@@ -12,7 +12,7 @@
 			Precio: <h:inputText value="#{editarBean.pedido.precio}"/><br/><br/>
 			Categoría:
 			<h:selectOneMenu value="#{editarBean.pedido.categoria}">
-				<f:selectItems var="c" value="#{editarBean.categorias}"/>			
+				<f:selectItems value="#{editarBean.categorias}"/>			
 			</h:selectOneMenu>
 			<h:commandButton action="#{editarBean.actualizar()}" value="Actualizar"/> 
 		</h:form><br/><br/>		

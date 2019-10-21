@@ -16,29 +16,34 @@ public class PedidosBean {
 	@EJB
 	DaoPedidos daoPedidos;
 	
-	List<Pedido> pedidos;
-	int idPedido;
-
+	private List<Pedido> pedidos;
+	private Pedido pedidoEditar;
+	
 	public List<Pedido> getPedidos() {
 		return pedidos;
 	}
 	public void setPedidos(List<Pedido> pedidos) {
 		this.pedidos = pedidos;
 	}
-	public int getIdPedido() {
-		return idPedido;
+	public Pedido getPedidoEditar() {
+		return pedidoEditar;
 	}
-	public void setIdPedido(int idPedido) {
-		this.idPedido = idPedido;
+	public void setPedidoEditar(Pedido pedidoEditar) {
+		this.pedidoEditar = pedidoEditar;
 	}
-	
 	@PostConstruct
 	public void inicio() {
 		pedidos=daoPedidos.recuperarPedidos();
 	}
-	public void eliminar() {
+	public void eliminar(int idPedido) {
 		daoPedidos.eliminarPedido(idPedido);
 		pedidos=daoPedidos.recuperarPedidos();
+//		pedidos.removeIf(p->p.getIdPedido()==idPedido);
+	}
+	
+	public String editarPedido(int idPedido) {
+		pedidoEditar=daoPedidos.recuperarPedido(idPedido);
+		return "editar";
 	}
 
 }

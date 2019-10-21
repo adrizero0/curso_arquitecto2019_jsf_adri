@@ -21,7 +21,6 @@ public class ValidadorCategoria implements Validator {
 		if(!valor.startsWith("9")) {
 			//SI NO CUMPLE CON EL CRITERIO, PROVOCAR UNA EXCEPCION
 			ResourceBundle res=arg0.getApplication().getResourceBundle(arg0, "mens");
-			
 			//FORMA FACIL
 			//throw new ValidatorException(new FacesMessage("Categoría no válida"));
 			

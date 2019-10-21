@@ -14,6 +14,6 @@ public interface DaoPedidos {
 	List<Pedido> recuperarPedidos();
 	void eliminarPedido(int idPedido);
 	List<String> recuperarCategorias();
-	void actualizarPedido(int idPedido);
+	void actualizarPedido(Pedido pedido);
 	Pedido recuperarPedido(int idPedido);
 }

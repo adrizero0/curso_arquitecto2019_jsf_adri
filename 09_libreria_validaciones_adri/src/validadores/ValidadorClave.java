@@ -19,7 +19,7 @@ public class ValidadorClave implements Validator {
 		String pass= (String)clave1.getValue();
 		String pass2=(String) arg2;
 		if(!pass.equals(pass2)) {
-			ResourceBundle res=arg0.getApplication().getResourceBundle(arg0, "mens");
+			ResourceBundle res=arg0.getApplication().getResourceBundle(arg0, "mens");			
 			throw new ValidatorException(new FacesMessage(res.getString("error.clave")));
 		}
 
