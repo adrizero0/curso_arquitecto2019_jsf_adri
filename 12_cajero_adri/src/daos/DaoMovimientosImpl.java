@@ -16,12 +16,15 @@ public class DaoMovimientosImpl implements DaoMovimientos {
 	EntityManager em;
 
    @Override
-	public List<Movimiento> obtenerMovimientosPorFecha(int idCuenta, Date fecha1, Date fecha2) {	   
+	public List<Movimiento> obtenerMovimientosPorFecha(int idCuenta, Date fecha1, Date fecha2) {
 	   Query qr=em.createNamedQuery("Movimiento.findByDateRange");
 	   qr.setParameter(1, idCuenta);
 	   qr.setParameter(2, fecha1);
 	   qr.setParameter(3, fecha2);
 	   return qr.getResultList();
+	   
+	   // POR DEFECTO COGE SOLO FECHA, EL TIMESTAMP SE USA PARA QUE COJA FECHA Y HORA
+	   //(2,fecha1,TemporalType.TIMESTAMP);
 	}
 
 }

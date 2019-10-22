@@ -7,33 +7,47 @@
 <h:head></h:head> 
 <h:body>
 	<center>
+		<p:messages>
+        	<p:autoUpdate/>
+    	</p:messages>
 		<h:form prependId="false">
-			<h1>Seleccione tema:</h1>
-			<p:outputLabel for="lista" value="Basic:" />
-			<p:selectOneMenu id="lista" value="#{GestionBean.cuentaSel}">
-				<f:selectItem itemLabel="Todos" itemValue="0"/>
-				<f:selectItems var="t" value="#{temasBean.temas}"
-							itemValue="#{t.idTema}"
-							itemLabel="#{t.tema}"/>
-				<f:ajax excecute="@form" render="tblibros"/>
-			</p:selectOneMenu>			 
+			<p:outputLabel value="Seleccione Cuenta:" />
+			<p:selectOneMenu id="lista" value="#{gestionBean.cuentaSel}" required="true">
+				<f:selectItem itemLabel="Selecciona una cuenta" itemValue=""/>
+				<f:selectItems var="c" value="#{gestionBean.cuentas}"
+							itemValue="#{c.numeroCuenta}"
+							itemLabel="#{c.numeroCuenta}"/>
+			</p:selectOneMenu><br/><br/>
+			
+			<p:outputLabel value="Introduce fecha de inicio"/><p:calendar id="fecha1" showOn="button" value="#{gestionBean.fecha1}"/>
+			<p:outputLabel value="Introduce fecha de fin"/>
+			<p:calendar id="fecha2" showOn="button" value="#{gestionBean.fecha2}">
+				<f:validator validatorId="vFechas"/>
+			</p:calendar><br/><br/>
+		<p:commandButton value="Ver moviemientos" update="tbmovimientos" action="#{gestionBean.buscarMovimientos()}"/>
+		
+		<br/><br/>
 		</h:form><br/><br/>
+		
+			<p:dataTable id="tbmovimientos" var="mov" value="#{gestionBean.movimientos}" style="width:80%" >
+			    <p:column headerText="Número de cuenta">
+			        <h:outputText value="#{mov.cuenta.numeroCuenta}" />
+			    </p:column>
+			 
+			    <p:column headerText="Fecha">
+			        <h:outputText value="#{mov.fecha}" />
+			    </p:column>
+			 
+			    <p:column headerText="Cantidad">
+			        <h:outputText value="#{mov.cantidad}" />
+			    </p:column>
+			 
+			    <p:column headerText="Tipo de movimiento">
+			        <h:outputText value="#{mov.operacion}" />
+				</p:column>
+			</p:dataTable>
+
+		<br/><br/>
 	</center>
-
-
-
-
-
-
-	<h:panelGrid columns="2" style="margin-bottom:10px" cellpadding="5">
-		<p:outputLabel for="console" value="Basic:" />
-		<p:selectOneMenu id="console" value="#{selectOneMenuView.console}" style="width:125px">
-			<f:selectItem itemLabel="Select One" itemValue="" />
-			<f:selectItem itemLabel="Xbox One" itemValue="Xbox One" />
-			<f:selectItem itemLabel="PS4" itemValue="PS4" />
-			<f:selectItem itemLabel="Wii U" itemValue="Wii U" />
-		</p:selectOneMenu>
-	</h:panelGrid>
-
 </h:body> 
 </html>

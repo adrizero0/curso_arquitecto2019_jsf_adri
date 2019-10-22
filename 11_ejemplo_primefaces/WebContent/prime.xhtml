@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"> 
+
+<h:head></h:head> 
+<h:body> 
+	<h:form>
+		Introduce fecha:<p:calendar showOn="button" value="#{primeBean.fecha}"/><br/><br/>
+		Edad: <p:spinner min="18" max="100" value="#{primeBean.edad}"/><br/><br/>
+		Color: <p:colorPicker value="#{primeBean.color}"/><br/><br/>
+		Nivel: <p:slider minValue="1" maxValue="10" for="nivel"/><br/><br/>
+		<h:inputHidden value="#{primeBean.nivel}" id="nivel"/>
+		<p:commandButton value="Entrar" update="fecha color edad ni"/>
+		
+		<br/><br/>
+		
+		
+	
+	</h:form>
+		Fecha:<h:outputText id="fecha" value="#{primeBean.fecha}" /><br/>
+		Color:<h:outputText id="color" value="#{primeBean.color}" /><br/>
+		Edad:<h:outputText id="edad" value="#{primeBean.edad}" /><br/>
+		Nivel:<h:outputText id="ni" value="#{primeBean.nivel}" /><br/>
+</h:body> 
+</html>
