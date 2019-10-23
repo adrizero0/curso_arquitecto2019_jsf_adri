@@ -1,5 +1,6 @@
 package service;
 
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -32,39 +33,44 @@ public class ServiceCajeroImpl implements ServiceCajero {
 	@Override
 	public void extraccion(int idCuenta, double cantidad) {
 		Cuenta cuenta=obtenerCuenta(idCuenta);
-		
-		
+		if(cuenta.getSaldo()>=cantidad) {
+			cuenta.setSaldo(cuenta.getSaldo()-cantidad);
+			daoCuentas.updateCuenta(cuenta);
+			Movimiento m=new Movimiento(0,cantidad,new Date(),"extracción",cuenta);
+			daoMovimientos.saveMovimiento(m);
+		}else {
+			throw new RuntimeException();
+		}
 	}
 
 	@Override
 	public void ingreso(int idCuenta, double cantidad) {
-		// TODO Auto-generated method stub
-		
+		Cuenta cuenta=obtenerCuenta(idCuenta);
+		cuenta.setSaldo(cuenta.getSaldo()+cantidad);
+		daoCuentas.updateCuenta(cuenta);
+		Movimiento m=new Movimiento(0,cantidad,new Date(),"ingreso",cuenta);
+		daoMovimientos.saveMovimiento(m);
 	}
 
 	@Override
 	public void transferencia(int idCuentaOrigen, int idCuentaDestino, double cantidad) {
-		// TODO Auto-generated method stub
-		
+		extraccion(idCuentaOrigen, cantidad);
+		ingreso(idCuentaDestino, cantidad);
 	}
 
 	@Override
 	public List<Cliente> obtenerTitulares(int idCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoClientes.findClienteByCuenta(idCuenta);
 	}
 
 	@Override
 	public List<Movimiento> obtenerMovimientos(int idCuenta) {
-		// TODO Auto-generated method stub
-		return null;
+		return daoMovimientos.findMovimientoByCuenta(idCuenta);
 	}
 
 	@Override
 	public double obtenerSaldo(int idCuenta) {
-		// TODO Auto-generated method stub
-		return 0;
+		Cuenta cuenta=daoCuentas.findCuenta(idCuenta);
+		return cuenta.getSaldo();
 	}
-
-
 }
