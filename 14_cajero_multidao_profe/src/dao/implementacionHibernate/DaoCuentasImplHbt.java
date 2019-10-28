@@ -17,7 +17,6 @@ import model.Cuenta;
  * Session Bean implementation class DaoCuentasImplHbt
  */
 @Stateless
-@LocalBean
 public class DaoCuentasImplHbt implements DaoCuentas{
 
 	@Override

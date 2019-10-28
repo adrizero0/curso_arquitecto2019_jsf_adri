@@ -17,7 +17,6 @@ import model.Cuenta;
  * Session Bean implementation class DaoClientesImplHbt
  */
 @Stateless
-@LocalBean
 public class DaoClientesImplHbt implements DaoClientes{	
 	@Override
 	public List<Cliente> findClienteByCuenta(int idCuenta) {

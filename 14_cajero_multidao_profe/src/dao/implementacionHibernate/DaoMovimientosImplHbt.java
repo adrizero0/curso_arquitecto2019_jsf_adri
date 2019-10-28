@@ -17,7 +17,6 @@ import model.Movimiento;
  * Session Bean implementation class DaoMovimientosImplHbt
  */
 @Stateless
-@LocalBean
 public class DaoMovimientosImplHbt implements DaoMovimientos{
 
 	@Override
