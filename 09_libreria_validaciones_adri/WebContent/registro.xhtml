@@ -13,7 +13,8 @@
 			</h:inputText><h:message for="us"/><br/><br/>
 			
 			Introduce Contraseña: 
-			<h:inputSecret id="clave1" value="#{registroBean.cliente.password}"/><br/><br/>
+			<h:inputSecret id="clave1" value="#{registroBean.cliente.password}" required="true">
+			</h:inputSecret><h:message for="us"/><br/><br/>
 			
 			Repite Contraseña: 
 			<h:inputSecret id="clave2" value="#{registroBean.repetirClave}">
